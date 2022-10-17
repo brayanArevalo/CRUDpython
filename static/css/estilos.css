@@ -1,0 +1,208 @@
+/*ESTILOS DASHBOARD */
+:root {
+  --primary: #111B54;
+  --light: #ffffff;
+  --grey: #efefef;
+}
+
+
+body {
+  overflow: hidden;
+  font-family: 'Muli', sans-serif;
+  font-weight: 300;
+  color: var(--primary);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
+.bg-primary { background-color: var(--primary) !important; }
+
+.bg-light { background-color: var(--light) !important; }
+
+.bg-grey { background-color: var(--grey) !important; }
+
+.bg-mix { background: linear-gradient(180deg, var(--light) 50%, var(--grey) 0); }
+
+/*
+.btn-primary {
+  background-color: var(--primary);
+  border: 0;
+}
+*/
+
+
+
+
+.btn-primary:hover {
+  background-color: var(--primary);
+}
+
+#sidebar-container {
+  
+  min-height: 100vh;
+}
+
+#sidebar-container .logo{
+  padding: 0.875rem 1.25rem;
+}
+
+#sidebar-container .menu {
+  width: 18rem;
+}
+
+@media (max-width: 768px) {
+  #sidebar-container {
+    display: none;
+  }
+  .stat {
+      border: 0;
+  }
+}
+
+.seleccion{
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+outline: none;
+
+}
+
+
+.mi-btn{
+margin: 7px;
+width: 45%;
+}
+
+.seleccion:focus{
+border-color: #5fcf80;
+}
+
+/* FIN DASHBOARD */
+
+.contact .container .form-group .miscomponentes:focus{
+border-color: #5fcf80;
+}
+
+
+
+.contact .container .form-group .miscomponentes{
+border-radius: 4px;
+border: .5px solid #000000;
+box-shadow: none;
+font-size: 14px;
+
+}
+
+
+.contact .container .form-group .miscomponentes{
+outline: none;
+width: 300px;
+height: 30px;
+border: 0.5px solid rgba(41, 41, 41, 0.3);
+}
+
+
+.contact .container .text-center input[type=submit]{
+background: #5fcf80;
+border: 0;
+padding: 10px 35px;
+color: #fff;
+transition: 0.4s;
+border-radius: 50px;
+}
+
+.contact .container .text-center button[type=submit]:hover {
+background: #3ac162;
+}
+
+#etiqueta1{
+padding: 20px;
+}
+#etiqueta2{
+padding: 8px;
+}
+
+
+
+/*Estilo formulario inicio sesión*/
+
+input[type=text], input[type=password],input[type=number], input[type=date]{
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+outline: none;
+}
+
+input[type=text]:focus, input[type=password]:focus,input[type=number]:focus, input[type=date]:focus{
+border-color: #5fcf80;
+}
+
+.sidebar{
+width: 250px;
+height: 100vh;
+}
+
+
+input[type=submit]{
+background: #5fcf80;
+border: 0;
+padding: 10px 35px;
+color: #fff;
+transition: 0.4s;
+width: 100%;
+border-radius: 50px;
+margin-top: 10px;
+/*
+width: 100%;
+background-color: #cda45e;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+*/
+}
+
+input[type=submit]:hover {
+ background: #3ac162;
+}
+
+.formularioiniciosesion {
+border-radius: 5px;
+background-color: #fff;
+padding: 20px;
+width: 30%;
+margin: auto;
+}
+
+.table .table-header{
+  background-color: #5FCF80;   
+}
+
+.table-header .text-header{
+   font-family: "Raleway", sans-serif;
+   color:#fff;
+}
+
+.fecha{
+  width:100%;
+  padding:10px;
+}
+
+
+/*Fin estilo inicio sesión*/
+
+
+

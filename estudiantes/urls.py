@@ -1,0 +1,30 @@
+from . import views
+from django.urls import path
+
+urlpatterns =[
+    path('',views.index,name='index'),
+    path('contactanos/',views.contactanos,name='contactanos'),
+    path('nosotros/',views.nosotros,name ='nosotros'),
+    path('demofree/',views.demofree,name='demofree'),
+    path('demofree/estudiantes/',views.estudiantes,name='estudiantes'),    
+    path('registrarEstudiante/', views.registrarEstudiante, name='registrarEstudiante'),
+    path('demofree/estudiantes/eliminarEstudiante/<id>',views.eliminarEstudiante, name='eliminarEstudiante'),
+    path('demofree/estudiantes/editarEstudiante/<id>',views.editarEstudiante, name='editarEstudiante'),
+    path('modificarEstudiante/',views.modificarEstudiante,name='modificarEstudiante'),
+    path('demofree/profesores/',views.profesores, name='profesores'),
+    path('registrarProfesor/', views.registrarProfesor, name='registrarProfesor'),
+    path('demofree/profesores/eliminarProfesor/<id>', views.eliminarProfesor, name='eliminarProfesor'),
+    path('demofree/profesores/editarProfesor/<id>',views.editarProfesor, name='editarProfesor'),
+    path('modificarProfesor/',views.modificarProfesor, name='modificarProfesor'),
+    path('demofree/asignaturas/',views.asignaturas, name='asignaturas'),
+    path('registrarAsignatura/',views.registrarAsignatura,name='registrarAsignatura'),
+    path('demofree/asignaturas/eliminarAsignatura/<id>',views.eliminarAsignatura,name='eliminarAsignatura'),
+    path('demofree/asignaturas/editarAsignatura/<id>',views.editarAsignatura,name='editarAsignatura'),
+    path('modificarAsignatura/',views.modificarAsignatura,name='modificarAsignatura'),
+    path('demofree/grupos/',views.grupos,name='grupos'),
+    path('registrarGrupo/',views.registrarGrupo,name='registrarGrupo'),
+    path('demofree/grupos/eliminarGrupo/<id>',views.eliminarGrupo,name='eliminarGrupo'),
+    path('demofree/grupos/editarGrupo/<id>',views.editarGrupo,name='editarGrupo'),
+    path('modificarGrupo/',views.modificarGrupo,name='modificarGrupo'),
+    path('demofree/notas/',views.notas,name='notas'),   
+]
