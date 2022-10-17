@@ -103,11 +103,11 @@
                   <td>{{n.logro}}</td>
                   <!-- <td>{{e.grupo.nombre }}</td> -->
                   <td >
-                    <a class="btn btn-success btn-sm" href="editarGrupo/{{g.id}}"
+                    <a class="btn btn-success btn-sm" href="editarNota/{{n.id}}"
                      > Actualizar</a>
                      <!-- ESTO ES PARA EL MODAL DEL BOTON ACTUALIZAR
                      data-bs-toggle="modal" data-bs-target="#contenedor-modal-modificar" -->
-                    <a class="btn btn-danger btn-sm" href="eliminarGrupo/{{g.id}}">Eliminar</a>                     
+                    <a class="btn btn-danger btn-sm" href="eliminarNota/{{n.id}}">Eliminar</a>                     
                   </td>
                 </tr>
                 {% endfor %}
@@ -116,7 +116,7 @@
           </div> 
 
           <div class="modal fade" id="contenedor-modal" tabindex="-1">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-scrollable">
               <div class="modal-content">
                 <div class="modal-header">
                   <h2 class="text-center">Añadir notas</h2>
@@ -125,12 +125,48 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form action="/registrarGrupo/" method="POST" >{% csrf_token %}
-                    <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" required>
+                  <form action="/registrarNota/" method="POST" >{% csrf_token %}
 
-                    <label for="cantidad">Cantidad de estudiantes</label>
-                    <input type="number" name="cantidad" id="cantidad" required>                    
+                    <label for="asignatura">Asignatura</label>
+                    <select class="seleccion" id="asignatura" name="asignatura">
+                      <option value="" selected="true" disabled>Escoger asignatura</option>
+                      {% for a in asignaturas %}
+                      <option value="{{a.id}}">{{a.nombre}}</option>
+                      {% endfor %}
+                    </select>
+
+                    <label for="profesor">Profesor</label>
+                    <select class="seleccion" id="profesor" name="profesor">
+                      <option value="" selected="true" disabled>Escoger profesor</option>
+                      {% for p in profesores %}
+                      <option value="{{p.id}}">{{p.nombre}} {{p.apellido}}</option>
+                      {% endfor %}
+                    </select>
+                    
+                    <label for="grupo">Grupo</label>
+                    <select  class="seleccion" id="grupo" name="grupo"  required>
+                      <option value="" selected="true" disabled="disabled">Escoger el grupo</option>
+                      {% for g in grupos %}
+                      <option value ="{{g.id}}"  required>{{g.nombre}}</option>                                  
+                      {% endfor %}
+                    </select>
+
+                    <label for="estudiante">Estudiante</label>
+                    <select  class="seleccion" id="estudiante" name="estudiante" required>
+                      <option value="" selected="true" disabled="disabled">Escoger el estudiante</option>
+                      {% for e in estudiantes %}
+                      <option value ="{{e.id}}"  required>{{e.nombre}} {{e.apellido}}</option>                                  
+                      {% endfor %}
+                    </select> 
+                    
+                    <label for="periodo">Periodo academico</label>
+                    <input type="text" id="periodo" name="periodo">
+                  
+                    <label for="nota">Nota</label>
+                    <input type="number" id="nota" name="nota"  step="any">
+                    
+                    <label for="logro">Logro</label>
+                    <input type="text" id="logro" name="logro">
                     
                     <button class="btn btn-info mi-btn text-light" >Guardar</button>
                     <button class="btn btn-danger mi-btn" data-bs-dismiss="modal">Cerrar</button>

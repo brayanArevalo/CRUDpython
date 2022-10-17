@@ -26,5 +26,10 @@ urlpatterns =[
     path('demofree/grupos/eliminarGrupo/<id>',views.eliminarGrupo,name='eliminarGrupo'),
     path('demofree/grupos/editarGrupo/<id>',views.editarGrupo,name='editarGrupo'),
     path('modificarGrupo/',views.modificarGrupo,name='modificarGrupo'),
-    path('demofree/notas/',views.notas,name='notas'),   
+    path('demofree/notas/',views.notas,name='notas'), 
+    path('registrarNota/',views.registrarNota,name='registrarNota'),  
+    path('demofree/notas/eliminarNota/<id>',views.eliminarNota,name='eliminarNota'),
+    path('demofree/notas/editarNota/<id>',views.editarNota,name='editarNota'),
+    path('modificarNota/',views.modificarNota,name='modificarNota'),
+
 ]

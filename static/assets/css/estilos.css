@@ -200,6 +200,11 @@ input[type=submit]:hover {
     padding:10px;
 }
 
+.formulario-scrollable{
+  background-color: #000000;
+  overflow-y:scroll;
+}
+
 
 /*Fin estilo inicio sesión*/
 

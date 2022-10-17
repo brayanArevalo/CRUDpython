@@ -167,10 +167,69 @@ def modificarGrupo(request):
     grupoo.cant_estudiantes=cantidad
     return redirect('/demofree/grupos/')
 
+#NOTAS
 def notas(request):
     estudianteLista = estudiante.objects.all()
     grupoLista = grupo.objects.all()
+    profesorLista = profesor.objects.all()
+    asignaturaLista = asignatura.objects.all()
     notaLista = asignaturaxgrupo.objects.all()
     print(estudianteLista)
     print(notaLista)
-    return render(request,"notas.html",{"estudiantes": estudianteLista,"grupos":grupoLista,"notas":notaLista})
+    return render(request,"notas.html",{"estudiantes": estudianteLista,"grupos":grupoLista,
+    "notas":notaLista,"asignaturas":asignaturaLista,"profesores":profesorLista})
+
+def registrarNota(request):
+    asignatura = request.POST['asignatura']
+    profesor = request.POST['profesor']
+    grupo = request.POST['grupo']
+    estudiante = request.POST['estudiante']
+    periodo = request.POST['periodo']
+    nota = request.POST['nota']
+    logro = request.POST['logro']
+    
+    notaa = asignaturaxgrupo.objects.create(asignatura_id = asignatura,profesor_id=profesor,grupo_id=grupo,
+    estudiante_id=estudiante,periodo_academico=periodo,nota=nota,logro=logro)
+
+    return redirect('/demofree/notas/')
+
+def eliminarNota(request,id):
+    notaLista = asignaturaxgrupo.objects.get(id=id)
+    notaLista.delete()
+    return redirect('/demofree/notas/')
+
+def editarNota(request,id):
+    estudianteLista = estudiante.objects.all()
+    grupoLista = grupo.objects.all()
+    profesorLista = profesor.objects.all()
+    asignaturaLista = asignatura.objects.all()
+    notaLista = asignaturaxgrupo.objects.get(id=id)
+    print(estudianteLista)
+    print(notaLista)
+    return render(request,"editarNota.html",{"estudiantes": estudianteLista,"grupos":grupoLista,
+    "notas":notaLista,"asignaturas":asignaturaLista,"profesores":profesorLista})
+
+def modificarNota(request):
+    id = request.POST['id']
+    asignatura = request.POST['asignatura']
+    profesor = request.POST['profesor']
+    grupo = request.POST['grupo']
+    estudiante = request.POST['estudiante']
+    periodo = request.POST['periodo']
+    nota = request.POST['nota']
+    logro = request.POST['logro']
+
+    notaLista = asignaturaxgrupo.objects.get(id=id)
+    notaLista.pk=id
+    notaLista.asignatura_id = asignatura
+    notaLista.profesor_id = profesor
+    notaLista.grupo_id = grupo
+    notaLista.estudiante_id = estudiante
+    notaLista.periodo_academico=periodo
+    notaLista.nota=nota
+    notaLista.logro=logro
+    notaLista.save()
+    return redirect('/demofree/notas/')
+
+
+

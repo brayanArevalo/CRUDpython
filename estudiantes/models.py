@@ -30,7 +30,7 @@ class asignatura(models.Model):
     profesor = models.ForeignKey(profesor,on_delete = models.CASCADE)
 
 class asignaturaxgrupo(models.Model):
-    periodo_academico = models.PositiveIntegerField(blank=False, default=0)
+    periodo_academico = models.TextField()
     profesor = models.ForeignKey(profesor, on_delete = models.CASCADE,default=1)
     asignatura = models.ForeignKey(asignatura, on_delete = models.CASCADE)
     grupo = models.ForeignKey(grupo,on_delete = models.CASCADE)

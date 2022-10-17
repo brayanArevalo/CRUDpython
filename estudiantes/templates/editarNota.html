@@ -1,82 +1,75 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Prueba</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-  <title>School tool</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+<link rel="stylesheet" type="text/css" href="{% static 'css' %}/formularioNota.css">
 
-  <!-- Favicons -->
-  <link href="{% static 'assets' %}' %}/img/favicon.png" rel="icon">
-  <link href="{% static 'assets' %}/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{% static 'assets' %}/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="{% static 'assets' %}/vendor/aos/aos.css" rel="stylesheet">
-  <link href="{% static 'assets' %}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="{% static 'assets' %}/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="{% static 'assets' %}/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="{% static 'assets' %}/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="{% static 'assets' %}/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="{% static 'assets' %}/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Mentor - v4.9.0
-  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
-
 <body>
-  <div class="d-flex" id="content-wrapper">
-        <div class="w-100  mt-3 ">
-          <div class="row">
-            <div class="col-4 offset-4 mt-3">
-              <h3> Actualizar grupo </h3>
-              <form action="/modificarGrupo/" method="POST" >{% csrf_token %}
-                <label for="id">ID</label>
-                <input type="text" name="id" id="id" required value="{{grupos.id}}" readonly>
+	<div class="container">
+		<div class="row">
+			<div class="col-4 offset-4">
+        <h2>Actualizar nota</h2>
+				<form class="formulario-scrollable" action="/modificarNota/" method="POST" >{% csrf_token %}
+                
+                <label for="ID">ID</label>
+                <input type="number" id="id" name="id" value="{{notas.id}}" readonly>
+                <label for="asignatura">Asignatura</label>
+                <select class="seleccion" id="asignatura" name="asignatura">
+                  <option value="" selected="true" disabled>Escoger asignatura</option>
+                  {% for a in asignaturas %}
+                  <option value="{{a.id}}">{{a.nombre}}</option>
+                  {% endfor %}
+                </select>
+                
+                <label for="profesor">Profesor</label>
+                <select class="seleccion" id="profesor" name="profesor">
+                  <option value="" selected="true" disabled>Escoger profesor</option>
+                  {% for p in profesores %}
+                  <option value="{{p.id}}" >{{p.nombre}} {{p.apellido}}</option>
+                  {% endfor %}
+                </select>
+                
+                <label for="grupo">Grupo</label>
+                <select  class="seleccion" id="grupo" name="grupo"  required>
+                  <option value="" selected="true" disabled="disabled">Escoger el grupo</option>
+                  {% for g in grupos %}
+                  <option value ="{{g.id}}"  required>{{g.nombre}}</option>                                  
+                  {% endfor %}
+                </select>
+                
+                <label for="estudiante">Estudiante</label>
+                <select  class="seleccion" id="estudiante" name="estudiante" required>
+                  <option value="" selected="{{notas.id.estudiante.nombre}}" disabled="disabled">Escoger el estudiante</option>
+                  {% for e in estudiantes %}
+                  <option value ="{{e.id}}"  required>{{e.nombre}} {{e.apellido}}</option>                                  
+                  {% endfor %}
+                </select> 
+                
+                <label for="periodo">Periodo academico</label>
+                <input type="text" id="periodo" name="periodo" value="{{notas.periodo_academico}}">
+                
+                <label for="nota">Nota</label>
+                <input type="number" id="nota" name="nota"  step="any" value="{{notas.nota}}">
+                
+                <label for="logro">Logro</label>
+                <input type="text" id="logro" name="logro" value="{{notas.logro}}">
 
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" id="nombre" required value="{{grupos.nombre}}">
+                
+                <button class="btn btn-info mi-btn text-light" >Guardar</button>          
+                <a href="{% url 'notas' %}" class="btn btn-danger mi-btn">cerrar</a>
+              </form>  
+			</div>
+		</div>
 
-                <label for="cantidad">Máximo de estudiantes</label>
-                <input type="number" name="cantidad" id="cantidad" required value="{{grupos.cant_estudiantes}}">
+	</div>
 
-                <button class="btn btn-info mi-btn text-light" >Guardar</button>
-                <a href="{% url 'grupos' %}" class="btn btn-danger mi-btn">cerrar</a>
-                <!-- <button href="demofree/estudiantes" class="btn btn-danger mi-btn" >Cerrar</button> -->
-                <!-- data-bs-dismiss="modal" -->
-              </form>    
-            </div>
-          </div>
 
-        
-        </div>
-        </div>
-    </div>
-
-  <!-- Vendor JS Files -->
-  <script src="{% static 'assets' %}/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="{% static 'assets' %}/vendor/aos/aos.js"></script>
-  <script src="{% static 'assets' %}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="{% static 'assets' %}/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="{% static 'assets' %}/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{% static 'assets' %}/js/main.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
-
 </html>
