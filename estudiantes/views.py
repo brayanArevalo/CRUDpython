@@ -165,6 +165,7 @@ def modificarGrupo(request):
     grupoo.pk = id
     grupoo.nombre = nombre
     grupoo.cant_estudiantes=cantidad
+    grupoo.save()
     return redirect('/demofree/grupos/')
 
 #NOTAS

@@ -81,7 +81,8 @@
 
             <label for="profesor">Profesor</label>
             <select class="seleccion" id="profesor" name="profesor" required>
-              <option value="" selected="true" disabled="disabled">Escoger el profesor</option>
+
+              <option value="{{asignaturas.profesor.id}}" selected="true" hidden>{{asignaturas.profesor.nombre}} {{asignaturas.profesor.apellido}}</option>
               {% for p in profesores %}
               <option value="{{p.id}}" required>{{p.nombre}} {{p.apellido}}</option>
               {% endfor %}

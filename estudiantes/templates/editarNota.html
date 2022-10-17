@@ -19,17 +19,18 @@
                 
                 <label for="ID">ID</label>
                 <input type="number" id="id" name="id" value="{{notas.id}}" readonly>
+                <div class="contenedor-prueb">
                 <label for="asignatura">Asignatura</label>
                 <select class="seleccion" id="asignatura" name="asignatura">
-                  <option value="" selected="true" disabled>Escoger asignatura</option>
+                  <option value="{{notas.asignatura.id}}" selected="true" hidden>{{notas.asignatura.nombre}}</option>
                   {% for a in asignaturas %}
                   <option value="{{a.id}}">{{a.nombre}}</option>
                   {% endfor %}
                 </select>
-                
+                </div>
                 <label for="profesor">Profesor</label>
                 <select class="seleccion" id="profesor" name="profesor">
-                  <option value="" selected="true" disabled>Escoger profesor</option>
+                  <option value="{{notas.profesor.id}}" selected="true" hidden>{{notas.profesor.nombre}} {{notas.profesor.apellido}}</option>
                   {% for p in profesores %}
                   <option value="{{p.id}}" >{{p.nombre}} {{p.apellido}}</option>
                   {% endfor %}
@@ -37,7 +38,7 @@
                 
                 <label for="grupo">Grupo</label>
                 <select  class="seleccion" id="grupo" name="grupo"  required>
-                  <option value="" selected="true" disabled="disabled">Escoger el grupo</option>
+                  <option value="{{notas.grupo.id}}" selected="true" hidden>{{notas.grupo.nombre}}</option>
                   {% for g in grupos %}
                   <option value ="{{g.id}}"  required>{{g.nombre}}</option>                                  
                   {% endfor %}
@@ -45,7 +46,7 @@
                 
                 <label for="estudiante">Estudiante</label>
                 <select  class="seleccion" id="estudiante" name="estudiante" required>
-                  <option value="" selected="{{notas.id.estudiante.nombre}}" disabled="disabled">Escoger el estudiante</option>
+                  <option  value="{{notas.estudiante.id}}" selected="true" hidden>{{notas.estudiante.nombre}} {{notas.estudiante.apellido}}</option>
                   {% for e in estudiantes %}
                   <option value ="{{e.id}}"  required>{{e.nombre}} {{e.apellido}}</option>                                  
                   {% endfor %}

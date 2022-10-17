@@ -79,7 +79,7 @@
                 <input type="text" name="apellido" id="apellido" value="{{estudiantes.apellido}}" required>               
                 <label for="grupo">Grupo</label>
                 <select  class="seleccion" id="grupo" name="grupo"  required> 
-                  <option value="" selected="true" disabled="disabled">Escoger el grupo</option>
+                  <option value="{{estudiantes.grupo.id}}" selected="true" hidden>{{estudiantes.grupo.nombre}}</option>
                   {% for g in grupos %}
                   <option value ="{{g.id}}" required>{{g.nombre}}</option>                                  
                   {% endfor %}
